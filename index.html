@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rust Onslaught</title>
+    <style>
+        @font-face {
+            font-family: 'PixelArmy';
+            src: url('assets/fonts/PixelArmy.ttf') format('truetype');
+        }
+
+        /* Setting up CSS variables makes it easy to reuse your colors */
+        :root {
+            --main-red: #700404;
+            --bg-dark: #220101;
+            --text-light: #700404;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: 'PixelArmy', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: radial-gradient(circle at center, #1f1f1f 0%, var(--bg-dark) 100%);
+        }
+
+        .container {
+            text-align: center;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 10px;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            /* Creates a gritty, glowing text shadow using your main color */
+            text-shadow: 2px 2px 0px #000, 0 0 20px var(--main-red);
+        }
+
+        .logo {
+            max-width: 700px;
+            width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 10px rgba(112, 4, 4, 0.6));
+        }
+
+        p {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            margin-bottom: 30px;
+        }
+
+        .steam-btn {
+            display: inline-block;
+            padding: 15px 35px;
+            background-color: var(--main-red);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 2px solid #500202; /* A slightly darker shade for the border */
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        .steam-btn:hover {
+            background-color: #900505; /* Lightens up slightly on hover */
+            border-color: #ff3333;
+            box-shadow: 0 0 15px var(--main-red);
+            transform: translateY(-2px);
+        }
+
+        .carousel-container {
+            position: relative;
+            max-width: 700px;
+            width: 100%;
+            margin: 40px auto;
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid var(--main-red);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .carousel-slide {
+            position: relative;
+            width: 100%;
+            display: none;
+        }
+
+        .carousel-slide.active {
+            display: block;
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .carousel-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        .carousel-btn {
+            background-color: var(--main-red);
+            color: #ffffff;
+            border: 2px solid #500202;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 4px;
+            font-family: 'PixelArmy', sans-serif;
+        }
+
+        .carousel-btn:hover {
+            background-color: #900505;
+            border-color: #ff3333;
+            box-shadow: 0 0 10px var(--main-red);
+        }
+
+        .carousel-counter {
+            color: #aaaaaa;
+            font-size: 1rem;
+        }
+
+        .footer {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #500202;
+            text-align: center;
+        }
+
+        .footer-email {
+            font-size: 0.9rem;
+            color: #888888;
+            margin-bottom: 15px;
+            text-decoration: none;
+        }
+
+        .footer-email:hover {
+            color: var(--main-red);
+        }
+
+        .footer-credits {
+            font-size: 0.8rem;
+            color: #666666;
+            line-height: 1.6;
+        }
+
+        .footer-credits p {
+            margin: 5px 0;
+            font-size: 0.8rem;
+        }
+
+        .footer-credits a {
+            color: #888888;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-credits a:hover {
+            color: var(--main-red);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="assets/images/a_little_more_boring_logo_but_your_honor_brit_likes_it.png" alt="Rust Onslaught Logo" class="logo">
+        <p>Rust Onslaught is an original top-down shooter all about robot domination! Take control of R-75 as he cuts a swath through every machine he sees!.</p>
+        
+        <!-- Photo Wheel Carousel -->
+        <div class="carousel-container">
+            <div class="carousel-slide active">
+                <img src="assets/images/screenshots/Screenshot from 2026-09-13 00-12-26.png" alt="Screenshot 1">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/screenshots/Screenshot from 2026-09-13 00-14-24.png" alt="Screenshot 2">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/screenshots/Screenshot from 2026-09-13 00-15-46.png" alt="Screenshot 3">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/screenshots/Screenshot from 2026-09-13 00-16-32.png" alt="Screenshot 4">
+            </div>
+            <div class="carousel-slide">
+                <img src="assets/images/screenshots/Screenshot from 2026-09-13 00-17-24.png" alt="Screenshot 5">
+            </div>
+            <div class="carousel-nav">
+                <button class="carousel-btn" onclick="prevSlide()">← Previous</button>
+                <span class="carousel-counter"><span id="current">1</span> / <span id="total">5</span></span>
+                <button class="carousel-btn" onclick="nextSlide()">Next →</button>
+            </div>
+        </div>
+        
+        <p>After a robot uprising in the distant past, only intelligent machines remain. Created as a warehouse guard, just another specialized cog in the system, you've been freed through a robot virus causing you and others to lash out in extreme violence!</p>
+        
+        <!-- Replace the '#' with your actual Steam store URL -->
+        <a href="https://store.steampowered.com/app/3658590/Rust_Onslaught/" class="steam-btn">Wishlist on Steam</a>
+        
+        <div class="footer">
+            <a href="mailto:archerdickerson@rustonslaught.games" class="footer-email">archerdickerson@rustonslaught.games</a>
+            <div class="footer-credits">
+                <p><a href="https://www.instagram.com/archerdickerson/">Archer Dickerson</a> - Dev</p>
+                <p><a href="https://www.youtube.com/@silvergecko1174">Aaron Gress</a> - Musician</p>
+                <p><a href="https://www.youtube.com/channel/UCUpmeJJrQOO_69snS2VJWhA">John Haub</a> - Art</p>
+            </div>
+            <img src="assets/images/explodingr-75.gif" alt="Exploding R-75" style="max-width: 80px; width: 100%; height: auto; margin-top: 20px;">
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.carousel-slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[n].classList.add('active');
+            document.getElementById('current').textContent = n + 1;
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            showSlide(currentSlide);
+        }
+    </script>
+</body>
+</html>
